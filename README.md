@@ -14,9 +14,9 @@ go install github.com/slavaavr/go-struct-builder/cmd/gosb@v1.0.0
 
 ## Quick start
 
-- To generate the struct builder add the appropriate `go:generate` comment:
+- To generate a struct builder add the appropriate `go:generate` comment:
 ```go
-// input.go - the file where struct is located
+// input.go - file where struct is located
 
 //go:generate gosb -source=input.go
 type A struct {
@@ -28,6 +28,10 @@ Then run the command:
 ```bash
 go generate ./...
 ```
+That's it. Examples can be found in the [testdata](https://github.com/slavaavr/go-struct-builder/tree/master/internal/service/testdata) folder.
+
+## Required / Optional fields
+
 - There are two types of struct fields: `required` and `optional`. By default, every pointer** value is optional and the rest of them are required.
 To change the default behaviour add the appropriate struct tags:
 ```go
@@ -40,7 +44,6 @@ type B struct {
 Generated builder will check if `required` fields were provided.
 - For a `private` struct a `private` builder will be generated. 
 - If struct has `private` fields, along with the builder `getter methods` will be generated.
-- For more examples see the [testdata](https://github.com/slavaavr/go-struct-builder/tree/master/internal/service/testdata) folder. 
 
 ** and the `Option` type from`github.com/samber/mo` package.
 
